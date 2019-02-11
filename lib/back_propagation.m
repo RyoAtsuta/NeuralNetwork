@@ -1,7 +1,6 @@
 function Delta = back_propagation(network, alpha, Y)
 
   # preparation for calculation
-  ## avoid affecting network theta
   output_theta = network.output_theta;
   hidden_theta = network.hidden_theta;
   input_theta = network.input_theta;
@@ -46,8 +45,4 @@ function Delta = back_propagation(network, alpha, Y)
 
   ## input layer
   Delta.input_delta += delta.hidden_delta(last_hidden_layer) * alpha.input_alpha';
-
-
-
-
   

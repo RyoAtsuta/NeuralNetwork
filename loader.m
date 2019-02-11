@@ -6,6 +6,8 @@ disp("imported neural_network(layer, input_unit, hidden_unit, output_unit)");
 
 mnist = load_mnist_files();
 
+labels = [1,2,3,4,5,6,7,8,9,0];
+
 disp("------ loaded mnist variable ------");
 disp("");
 disp("  ##### train image #####");
@@ -35,3 +37,6 @@ disp("  -  test_labels_number");
 disp("  -  test_labels_row");
 disp("  -  test_labels_col");
 disp("");
+
+disp("labels = ");
+disp(labels);
