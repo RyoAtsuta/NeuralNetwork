@@ -13,18 +13,11 @@ network = neural_network(layer, input_unit, hidden_unit, output_unit);
 
 disp("created neural network.");
 
-[alpha, result_code] = forward_propagation(network, mnist.train_images(:,1));
-disp("processed forward propagation");
+m = mnist.train_images_number;
 
-Delta = back_propagation(network, alpha, mnist.train_labels(1));
-disp("processed back propagation");
-
-D = calculate_derivative(network, Delta, 1, lambda);
-disp("calculated derivative");
-
-# options = optimset("GradObj", "on", "MaxIter", 100);
-# [opt_theta, function_val, exit_flag] = fminunc(@cost_function, initial_theta, options);
-
-learning(network, D, learning_rate);
-
-
+for i = 1:m
+  [alpha, result_code] = forward_propagation(network, mnist.train_images(:,i));
+  Delta = back_propagation(network, alpha, mnist.train_labels(i));
+  D = calculate_derivative(network, Delta, m, lambda);
+  network = learning(network, D, learning_rate);
+end

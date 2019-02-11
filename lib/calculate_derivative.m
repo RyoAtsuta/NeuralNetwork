@@ -16,7 +16,7 @@ function D = calculate_derivative(network, Delta, total, lambda)
 
   # hidden layer
   for i = 1:(network.layer - 3)
-    D.hidden_d = (1 / total) * (Delta.hidden_delta(:,:,i) + lambda * hidden_theta(:,:,i));
+    D.hidden_d(:,:,i) = (1 / total) * (Delta.hidden_delta(:,:,i) + lambda * hidden_theta(:,:,i));
   end
 
   # output layer
