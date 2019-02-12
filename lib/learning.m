@@ -6,10 +6,10 @@ function network = learning(network, D, learning_rate)
   D.output_d = [zeros(network.output_unit, 1), D.output_d];
 
   # input layer
-  network.input_theta += learning_rate * D.input_d;
+  network.input_theta -= learning_rate * D.input_d;
 
   # hidden layer
-  network.hidden_theta += learning_rate * D.hidden_d;
+  network.hidden_theta -= learning_rate * D.hidden_d;
 
   # output layer
-  network.output_theta += learning_rate * D.output_d;
+  network.output_theta -= learning_rate * D.output_d;
