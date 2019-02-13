@@ -16,7 +16,7 @@ network = neural_network(layer, input_unit, hidden_unit, output_unit);
 disp("created neural network.");
 
 j_list = [];
-i_list = [];
+e_list = [];
 
 m = mnist.train_images_number;
 
