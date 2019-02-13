@@ -47,7 +47,7 @@ while e <= epoch
     j = cost_function(network, X, Y);
     j_list = [j_list, j];
     e_list = [e_list, e];
-    plot(i_list, j_list);
+    plot(e_list, j_list);
     e++;
     if e <= epoch
       i = 0;
