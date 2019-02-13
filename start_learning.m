@@ -9,7 +9,7 @@ input_unit = 784; # input("How many input units?: ");
 hidden_unit = 100; # input("How many hidden units?: ");
 output_unit = 10; # input("How many output units?: ");
 learning_rate = input("Learning Late?: ");
-lambda = 0; # 0.0025; # input("Degree of lambda?: ");
+lambda = 0.0025; # input("Degree of lambda?: ");
 
 network = neural_network(layer, input_unit, hidden_unit, output_unit);
 
@@ -20,10 +20,15 @@ i_list = [];
 
 m = mnist.train_images_number;
 
+epoch = 60;
+e = 1;
+
 disp("Now learning...");
 
-for i = 1:m
+i = 1;
+while e <= epoch
   X = mnist.train_images(:,i);
+  X = feature_scale(X);
   [alpha, result_code] = forward_propagation(network, X);
 
   Y = zeros(length(labels), 1);
@@ -38,22 +43,27 @@ for i = 1:m
   D = calculate_derivative(network, Delta, m, lambda);
   network = learning(network, D, learning_rate);
 
-  if mod(i, 500) == 0
+  if mod(i, m) == 0
     j = cost_function(network, X, Y);
     j_list = [j_list, j];
-    i_list = [i_list, i];
-    # plot(i_list, j_list);
+    e_list = [e_list, e];
+    plot(i_list, j_list);
+    e++;
+    if e <= epoch
+      i = 0;
+    end
   end
-  
-  # network.output_theta ####### Monitor this theta
-  # alpha.output_alpha   ####### Monitor this alpha
+
+  # network.output_theta ####### This is for debuging to monitor theta
+  # alpha.output_alpha   ####### This is for debuging to monitor alpha
+  i++;
 end
 
 m = mnist.test_images_number;
 correct_count = 0;
 incorrect_count = 0;
 
-plot(i_list, j_list);
+plot(e_list, j_list);
 
 disp("Now predicting...");
 
