@@ -25,5 +25,5 @@ function [alpha, result_code] = forward_propagation(network, X)
 
   # output layer
   adding_alpha = sigmoid(network.output_theta * [1; adding_alpha]);
-  alpha.output_alpha = adding_alpha;
+  alpha.output_alpha = softmax(adding_alpha);
   result_code = 0;
