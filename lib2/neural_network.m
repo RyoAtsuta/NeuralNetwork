@@ -1,6 +1,8 @@
 function network = neural_network(input_unit, hidden_unit, output_unit)
 
   layer = 5;
+  lambda = 10;
+  learning_speed = 0.01;
 
   # initialize theta
   ## initialize theta in input layer
@@ -27,3 +29,7 @@ function network = neural_network(input_unit, hidden_unit, output_unit)
   network.input_unit = input_unit;
   network.hidden_unit = hidden_unit;
   network.output_unit = output_unit;
+
+  ## parameter
+  network.lambda = lambda;
+  network.learning_speed = learning_speed;
