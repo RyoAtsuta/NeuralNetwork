@@ -1,7 +1,7 @@
 function network = neural_network(input_unit, hidden_unit, output_unit)
 
   layer = 5;
-  lambda = 10;
+  lambda = 1; # I don't use this yet
   learning_speed = 0.01;
 
   # initialize theta

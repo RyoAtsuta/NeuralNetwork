@@ -1,3 +1,3 @@
 function output = relu(Z)
-
-  output = 0;
+  X = Z > 0;
+  output = Z .* X;

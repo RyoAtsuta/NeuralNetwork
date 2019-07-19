@@ -11,7 +11,7 @@ function output = learn(network, train_images, train_labels, labels)
     alpha_object = forward_propagation(network, train_images(:,i));
 
     # Backword Propagation (Calculate Error)
-    error_object = backword_propagation(network, alpha_object, train_label, train_images_number);
+    error_object = backword_propagation(network, alpha_object, train_label);
 
     # Gradient Descent to update Theta (Learning)
     network = gradient_descent(network, error_object);

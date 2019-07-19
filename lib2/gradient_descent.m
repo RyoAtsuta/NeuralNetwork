@@ -1,7 +1,6 @@
 function output = gradient_descent(network, error_object)
   
   output = network;
-  learning_speed = 0.1;
 
   # update theta1
   output.theta1 = network.theta1 - network.learning_speed * error_object.delta1;

@@ -4,9 +4,9 @@ warning("off", "all");
 loader;
 
 # configure settings of neural network architecture
-layer = 5; # input("How many layers?: ");
+layer = 6; # input("How many layers?: ");
 input_unit = 784; # input("How many input units?: ");
-hidden_unit = 100; # input("How many hidden units?: ");
+hidden_unit = 10; # input("How many hidden units?: ");
 output_unit = 10; # input("How many output units?: ");
 learning_rate = input("Learning Late?: ");
 lambda = 0.0025; # input("Degree of lambda?: ");
@@ -20,7 +20,7 @@ e_list = [];
 
 m = mnist.train_images_number;
 
-epoch = 60;
+epoch = 20;
 e = 1;
 
 disp("Now learning...");
@@ -50,6 +50,7 @@ while e <= epoch
     plot(e_list, j_list);
     e++;
     if e <= epoch
+      # learning_rate = input("Learning Late?: ");
       i = 0;
     end
   end

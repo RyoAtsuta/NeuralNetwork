@@ -41,6 +41,10 @@ epoch = input("Epoch: ");
 network = neural_network(input_unit, hidden_unit, output_unit);
 disp("Created Neural Network");
 
+# Feature Scaling
+mnist.train_images = feature_scale(mnist.train_images);
+mnist.test_images = feature_scale(mnist.test_images);
+
 # Learning
 disp("Now Learning...");
 for i = 1:epoch
