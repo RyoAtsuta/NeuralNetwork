@@ -33,7 +33,7 @@ warning("off", "all");
 loader;
 
 input_unit = 784;
-hidden_unit = input("Hiden Unit: ");
+hidden_unit = input("Hidden Unit: ");
 output_unit = 10;
 epoch = input("Epoch: ");
 
