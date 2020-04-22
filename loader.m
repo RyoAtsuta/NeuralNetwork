@@ -1,5 +1,5 @@
 disp("now loading...");
-addpath("lib2");
+addpath("lib");
 disp("imported load_mnist_files()");
 disp("imported random_init(row, col)");
 disp("imported neural_network(layer, input_unit, hidden_unit, output_unit)");

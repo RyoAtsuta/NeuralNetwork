@@ -1,29 +1,24 @@
-function [alpha, result_code] = forward_propagation(network, X)
+function alpha_object = forward_propagation(network, train_image, activator)
+  
+  # Activator Choise
+  # - relu
+  # - sigmoid
+  # - softmax
 
-  # check neural network
-  if !(isfield(network, "input_theta") &&  isfield(network, "hidden_theta") && isfield(network, "output_theta")
-    && isfield(network, "input_unit") && isfield(network, "hidden_unit") && isfield(network, "output_unit")
-    && isfield(network, "layer"))
-    alpha = [];
-    result_code = -1;
-    disp("Invalid Neural Network. Please call neural_network function to get neural_network.");
-    return;
-  end
+  alpha_object = [];
+  alpha_object.alpha1 = train_image;
 
-  # input layer
-  adding_alpha = X;
-  alpha.input_alpha = adding_alpha;
+  # layer 1 -> 2
+  alpha_object.alpha2 = sigmoid(network.theta1 * alpha_object.alpha1);
 
-  # hidden layer
-  adding_alpha = sigmoid(network.input_theta * [1; adding_alpha]);
-  alpha.hidden_alpha = adding_alpha;
+  # layer 2 -> 3
+  alpha_object.alpha3 = sigmoid(network.theta2 * alpha_object.alpha2);
 
-  for i = 1:(network.layer - 3)
-    adding_alpha = sigmoid(network.hidden_theta(:,:,i) * [1; adding_alpha]);
-    alpha.hidden_alpha = [alpha.hidden_alpha, adding_alpha];
-  end
+  # layer 3 -> 4
+  alpha_object.alpha4 = sigmoid(network.theta3 * alpha_object.alpha3);
 
-  # output layer
-  adding_alpha = sigmoid(network.output_theta * [1; adding_alpha]);
-  alpha.output_alpha = softmax(adding_alpha);
-  result_code = 0;
+  # layer 4 -> 5
+  alpha_object.alpha5 = softmax(network.theta4 * alpha_object.alpha4);
+
+  # for debug
+  # alpha_object.alpha5

@@ -16,6 +16,8 @@ function output = learn(network, train_images, train_labels, labels)
     # Gradient Descent to update Theta (Learning)
     network = gradient_descent(network, error_object);
 
+    network.theta4
+
   end
 
   output = network;
